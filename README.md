@@ -1,1 +1,1 @@
-# javacode-go
+# wallet-api
