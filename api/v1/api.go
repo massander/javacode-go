@@ -21,10 +21,9 @@ func NewAPIv1Service(storage *postgres.Storage, cache *gocache.Cache) *APIv1Serv
 	return api
 }
 
-func (s *APIv1Service) UpdateBalance(w http.ResponseWriter, r *http.Request) {
+func (s *APIv1Service) RegisterGateway(mux *http.ServeMux) error {
+	mux.HandleFunc("POST /api/v1/wallet", s.updateBalance)
+	mux.HandleFunc("GET /api/v1/wallets/{WALLET_UUID}", s.getBalance)
 
-}
-
-func (s *APIv1Service) GetBalance(w http.ResponseWriter, r *http.Request) {
-
+	return nil
 }
