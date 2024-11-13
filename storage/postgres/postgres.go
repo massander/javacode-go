@@ -6,10 +6,14 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+
+	"wallet-api/storage"
 )
 
 type Storage struct {
 	pool *pgxpool.Pool
+
+	Wallet storage.WalletStorage
 }
 
 func New(URL string) (*Storage, error) {
@@ -29,7 +33,14 @@ func New(URL string) (*Storage, error) {
 		return nil, fmt.Errorf("%s: %w", op, err)
 	}
 
-	return &Storage{pool: pool}, nil
+	storage := &Storage{
+		pool: pool,
+		Wallet: &WalletStorage{
+			pool: pool,
+		},
+	}
+
+	return storage, nil
 }
 
 func (s *Storage) Close() {
