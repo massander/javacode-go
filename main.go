@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
-	"github.com/patrickmn/go-cache"
+	gocache "github.com/patrickmn/go-cache"
 
 	api "wallet-api/api/v1"
 	"wallet-api/storage/postgres"
@@ -29,7 +29,7 @@ func main() {
 	}
 	defer db.Close()
 
-	cache := cache.New(5*time.Minute, 10*time.Minute)
+	cache := gocache.New(5*time.Minute, 10*time.Minute)
 
 	mux := http.NewServeMux()
 
