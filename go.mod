@@ -4,8 +4,11 @@ go 1.23.3
 
 require (
 	github.com/jackc/pgx/v5 v5.7.1
+	github.com/joho/godotenv v1.5.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 )
+
+require github.com/stretchr/testify v1.9.0 // indirect
 
 require (
 	github.com/google/uuid v1.6.0
