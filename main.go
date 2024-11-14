@@ -10,7 +10,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/joho/godotenv"
 	gocache "github.com/patrickmn/go-cache"
 
 	api "wallet-api/api/v1"
@@ -18,10 +17,11 @@ import (
 )
 
 func main() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Error loading .env file", err)
-	}
+	// Do not need with docker
+	// err := godotenv.Load(".env")
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file", err)
+	// }
 
 	db, err := postgres.New(os.Getenv("DATABASE_URL"))
 	if err != nil {
