@@ -75,7 +75,7 @@ func (s *WalletStorage) Balance(ctx context.Context, walletID uuid.UUID) (int, e
 	if err != nil {
 
 		if err == pgx.ErrNoRows {
-			return -1, fmt.Errorf("%s:%w:", op, storage.ErrorWalletNotFound)
+			return -1, fmt.Errorf("%s: %w", op, storage.ErrorWalletNotFound)
 		}
 
 		return -1, fmt.Errorf("%s: execute statement: %w", op, err)
